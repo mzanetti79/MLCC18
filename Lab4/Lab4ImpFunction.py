@@ -1,5 +1,6 @@
 import numpy as np
 import numpy.linalg as la
+import scipy.io as sio
 from matplotlib import pyplot
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -145,7 +146,7 @@ def LLoyd(X, centers, maxiter):
             if not (c_idx == idx_centroid).any():    # Checks the number of points assigned to this cluster
                 print("Cluster #", idx_centroid, "is empty")
             else:                                    # Updates centroids
-                centers[idx_centroid] = np.mean( X[c_idx == idx_centroid])
+                centers[idx_centroid] = np.mean( X[c_idx == idx_centroid], axis=0)
         #Check for convergence
         if ( np.sum(c_idx - idx_prev) == 0):
             print("LLoyd's algorithm: convergence reached")
